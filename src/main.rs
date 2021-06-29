@@ -90,7 +90,7 @@ async fn query_ann(ctx: web::Data<context::AppContext>, request: web::Json<model
 		}
 		println!("query: '{}' => {} results", title, ret.len());
 		Ok(web::Json(models::QueryResponse {
-			videos: ret[0..min(request.top_k.map_or(i32::MAX, |k| k) as usize, ret.len())].to_vec()
+			videos: ret[0..std::cmp::min(request.top_k.map_or(i32::MAX, |k| k) as usize, ret.len())].to_vec()
 		}))
 	} else {
 		Err(ServiceError::NotFound)
