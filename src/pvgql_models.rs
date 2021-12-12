@@ -128,7 +128,7 @@ pub struct Video {
 	pub clearence: i32,
 	pub item: VideoItem,
 	pub meta: Meta,
-	pub tag_count: i32,
+	pub tag_count: Option<i32>,
 	pub tags: Vec<i64>,
 	pub comment_thread: Option<ObjectId>
 }
